@@ -31,13 +31,20 @@
        1. WELCOME COVER SCREEN (BUKA TRANSITION)
        ========================================================================== -->
   <div id="buka-cover">
-    <div class="cover-card">
+    <div class="cover-content text-center">
       <div class="cover-tagline">WALIMATULURUS</div>
-      <h1 class="cover-title">Ariff & Anis</h1>
+
+      <!-- 3-Row Couple Names on Cover -->
+      <div class="cover-names-wrapper my-3">
+        <div class="cover-name-row">Ariff</div>
+        <div class="cover-ampersand-row">&</div>
+        <div class="cover-name-row">Anis</div>
+      </div>
+
       <div class="cover-date-pill">
         <i class="far fa-calendar-alt me-2"></i>Sabtu, 26 Disember 2026
       </div>
-      <p class="text-muted small mb-4">
+      <p class="text-navy small mb-4 fw-medium">
         Dewan Oncidium, Kota Kemuning, Shah Alam
       </p>
       <button id="btn-buka" class="btn btn-buka">
@@ -303,7 +310,7 @@
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"><i class="fas fa-address-book text-gold me-2"></i>Hubungi Ahli Keluarga</h5>
+          <h5 class="modal-title"><i class="fas fa-address-book text-gold me-2"></i>Ahli Keluarga</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -428,7 +435,7 @@
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"><i class="fas fa-heart text-gold me-2"></i>Sumbangan / Salam Kaut</h5>
+          <h5 class="modal-title"><i class="fas fa-heart text-gold me-2"></i>Salam Kaut</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -448,7 +455,7 @@
 
           <!-- Step 2: QR Code View (Hidden initially) -->
           <div id="sumbangan-qr-view" class="qr-container d-none">
-            <p class="small text-muted mb-2">Imbas Kod QR Maybank DuitNow di bawah:</p>
+            <p class="small text-muted mb-2">Imbas Kod QR DuitNow di bawah:</p>
 
             <!-- QR Image with fallback -->
             <img src="assets/images/qr_code.png" alt="Maybank DuitNow QR" class="qr-image"
@@ -469,7 +476,7 @@
             <div class="mt-3">
               <a href="assets/images/qr_code.png" download="QR_Maybank_Ariff.png"
                 class="btn btn-outline-dark btn-sm rounded-pill px-3">
-                <i class="fas fa-download me-1"></i> Simpan QR Image
+                <i class="fas fa-download me-1"></i> Simpan Gambar QR
               </a>
             </div>
           </div>
