@@ -12,8 +12,9 @@
 }
 
 @font-face {
-  font-family: "ArabQuranIslamic140Arab";
-  src: url("assets/fonts/ArabQuranIslamic140Arab.ttf")
+  font-family: "QPCHafs";
+  src: url("/assets/fonts/QPCHafs.ttf") format("truetype");
+  font-display: swap;
 }
 
 :root {
@@ -39,6 +40,7 @@
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-calligraphy: 'EdwardianScriptItc', cursive;
   --font-sans: 'Google Sans', sans-serif;
+  --font-arabic: 'QPCHafs';
 
   /* --- ANIMATIONS & TRANSITIONS --- */
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -313,11 +315,12 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .arabic-header {
-  font-family: var(--font-serif);
+  font-family: var(--font-arabic);
+  direction: rtl;
   font-size: 1.6rem;
   color: var(--accent-gold);
   margin-bottom: 15px;
-  font-weight: 600;
+  font-weight: normal;
 }
 
 .salutation-text {
@@ -505,8 +508,8 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 380px;
+  width: 100%;
+  max-width: 480px;
   z-index: 1000;
   padding: 0 12px;
 }
@@ -725,8 +728,8 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 }
 
-/* Vertical side nav for very small screens (<375px) */
-@media (max-width: 375px) {
+/* Vertical side nav for very small screens (<340px) */
+@media (max-width: 340px) {
 
   /* Reposition container to bottom-left corner */
   .bottom-nav-container {
@@ -765,8 +768,8 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     position: relative;
     right: -12px;
     top: auto;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     flex: none !important;
     /*box-shadow: 4px 4px 14px rgba(197, 160, 89, 0.6);*/
