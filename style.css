@@ -36,7 +36,7 @@
   --backdrop-blur: blur(12px);
 
   /* --- TYPOGRAPHY --- */
-  --font-serif: 'ArabQuranIslamic140Arab', serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
   --font-calligraphy: 'EdwardianScriptItc', cursive;
   --font-sans: 'Google Sans', sans-serif;
 
@@ -81,7 +81,7 @@ body.cover-active {
   height: 100vh;
   pointer-events: none;
   z-index: 0;
-  background: url('assets/images/bg_image.webp') no-repeat center top / cover;
+  background: url('assets/images/bg_image.webp') no-repeat center top / 100% 100%;
   opacity: 0.9;
 }
 
@@ -120,7 +120,8 @@ body.cover-active {
 
 /* Card Glass Frame Container */
 .card-wrapper {
-  max-width: 420px;
+  width: 80%;
+  max-width: 380px;
   margin: 0 auto;
   min-height: 100vh;
   position: relative;
@@ -147,7 +148,7 @@ body.cover-active {
   max-width: 480px;
   height: 100vh;
   z-index: 9999;
-  background: linear-gradient(rgba(233, 239, 245, 0.1), rgba(226, 232, 240, 0.1)), url('assets/images/bg_image.webp') no-repeat center top / cover;
+  background: linear-gradient(rgba(233, 239, 245, 0.1), rgba(226, 232, 240, 0.1)), url('assets/images/bg_image.webp') no-repeat center top / 100% 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,7 +164,7 @@ body.cover-active {
 }
 
 .cover-content {
-  max-width: 420px;
+  max-width: 480px;
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -504,9 +505,10 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 92%;
-  max-width: 440px;
+  width: 90%;
+  max-width: 380px;
   z-index: 1000;
+  padding: 0 12px;
 }
 
 .bottom-nav {
@@ -689,4 +691,88 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   color: #8a6d3b;
   margin-bottom: 20px;
   text-align: left;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 390px) {
+  .card-section {
+    padding: 35px 15px;
+  }
+
+  .cover-name-row {
+    font-size: 3.5rem;
+  }
+
+  .couple-name {
+    font-size: 3.2rem;
+  }
+
+  .countdown-box {
+    gap: 8px;
+  }
+
+  .countdown-item {
+    min-width: 60px;
+    padding: 8px 4px;
+  }
+
+  .countdown-number {
+    font-size: 1.3rem;
+  }
+
+  .countdown-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Vertical side nav for very small screens (<375px) */
+@media (max-width: 375px) {
+
+  /* Reposition container to bottom-left corner */
+  .bottom-nav-container {
+    left: 12px;
+    bottom: 12px;
+    transform: none;
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Stack items vertically in a tall pill */
+  .bottom-nav {
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 10px 6px;
+    gap: 2px;
+    width: 56px;
+  }
+
+  /* Each button fills the column width */
+  .nav-item-btn {
+    flex: none;
+    width: 100%;
+    padding: 8px 4px;
+    font-size: 0.58rem;
+    gap: 2px;
+  }
+
+  .nav-item-btn i {
+    font-size: 1rem;
+  }
+
+  /* Reset the floating RSVP button — pop it outward to the right */
+  .nav-item-rsvp {
+    position: relative;
+    right: -12px;
+    top: auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex: none !important;
+    /*box-shadow: 4px 4px 14px rgba(197, 160, 89, 0.6);*/
+  }
+
+  .nav-item-rsvp i {
+    font-size: 1.15rem;
+  }
 }
