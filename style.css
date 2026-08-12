@@ -4,11 +4,16 @@
    Controlled via CSS Variables for Seamless Future Theme Switching
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 @font-face {
   font-family: "EdwardianScriptItc";
   src: url("assets/fonts/EdwardianScriptItc.ttf");
+}
+
+@font-face {
+  font-family: "ArabQuranIslamic140Arab";
+  src: url("assets/fonts/ArabQuranIslamic140Arab.ttf")
 }
 
 :root {
@@ -31,9 +36,9 @@
   --backdrop-blur: blur(12px);
 
   /* --- TYPOGRAPHY --- */
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'ArabQuranIslamic140Arab', serif;
   --font-calligraphy: 'EdwardianScriptItc', cursive;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Google Sans', sans-serif;
 
   /* --- ANIMATIONS & TRANSITIONS --- */
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -76,7 +81,7 @@ body.cover-active {
   height: 100vh;
   pointer-events: none;
   z-index: 0;
-  background: url('assets/images/bg_image.png') no-repeat center top / cover;
+  background: url('assets/images/bg_image.webp') no-repeat center top / cover;
   opacity: 0.9;
 }
 
@@ -115,7 +120,7 @@ body.cover-active {
 
 /* Card Glass Frame Container */
 .card-wrapper {
-  max-width: 380px;
+  max-width: 420px;
   margin: 0 auto;
   min-height: 100vh;
   position: relative;
@@ -142,7 +147,7 @@ body.cover-active {
   max-width: 480px;
   height: 100vh;
   z-index: 9999;
-  background: linear-gradient(rgba(233, 239, 245, 0.1), rgba(226, 232, 240, 0.1)), url('assets/images/bg_image.png') no-repeat center top / cover;
+  background: linear-gradient(rgba(233, 239, 245, 0.1), rgba(226, 232, 240, 0.1)), url('assets/images/bg_image.webp') no-repeat center top / cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,7 +312,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .arabic-header {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif);
   font-size: 1.6rem;
   color: var(--accent-gold);
   margin-bottom: 15px;
