@@ -190,7 +190,7 @@ function initSumbanganModal() {
 }
 
 /* ==========================================================================
-   4. RSVP FORM (FIRAFORM API INTEGRATION)
+   4. RSVP FORM (FIRAFORM ENDPOINT INTEGRATION)
    ========================================================================== */
 function initRSVPForm() {
   const form = document.getElementById('rsvpForm');
@@ -214,7 +214,7 @@ function initRSVPForm() {
       timestamp: new Date().toISOString()
     };
 
-    const firaformEndpoint = form.dataset.firaformEndpoint || 'https://firaform.com/api/submit/sample-endpoint';
+    const firaformEndpoint = 'https://a.firaform.com/api/f/rplc5YfVD6AbZp0qkcB5r';
 
     try {
       // Post to Firaform API
@@ -224,14 +224,16 @@ function initRSVPForm() {
         body: JSON.stringify(formData)
       });
 
+      if (!response.ok) {
+        throw new Error(`Server responded with ${response.status}`);
+      }
+
       // Show success feedback
       showRSVPAlert('success', 'Terima kasih! RSVP dan ucapan anda telah berjaya dihantar.');
       form.reset();
     } catch (error) {
-      console.log('Firaform submission fallback (endpoint ready):', error);
-      // Friendly success fallback for demo/static preview
-      showRSVPAlert('success', 'Terima kasih! RSVP dan ucapan anda telah direkodkan.');
-      form.reset();
+      console.error('Firaform submission error:', error);
+      showRSVPAlert('danger', 'Maaf, ralat berlaku semasa menghantar. Sila cuba lagi.');
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
