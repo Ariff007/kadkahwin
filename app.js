@@ -221,10 +221,12 @@ function initRSVPForm() {
       const response = await fetch(firaformEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        redirect: 'manual'   // stop fetch from following Firaform's redirect (avoids CORS on /form/success)
       });
 
-      if (!response.ok) {
+      // opaqueredirect = Firaform accepted & issued 302 redirect = success
+      if (response.type !== 'opaqueredirect' && response.status >= 400) {
         throw new Error(`Server responded with ${response.status}`);
       }
 

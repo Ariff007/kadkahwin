@@ -379,7 +379,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
 .couple-hashtag {
   font-family: var(--font-hashtag);
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-navy);
   margin-bottom: 5px;
