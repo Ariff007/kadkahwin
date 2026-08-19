@@ -208,6 +208,7 @@ function initRSVPForm() {
 
     const formData = {
       nama: form.nama.value,
+      tel: form.tel.value,
       kehadiran: form.kehadiran.value,
       pax: form.pax.value,
       ucapan: form.ucapan.value,
