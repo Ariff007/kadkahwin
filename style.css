@@ -730,6 +730,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .map-embed-wrapper iframe {
