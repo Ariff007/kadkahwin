@@ -599,6 +599,28 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* ==========================================================================
+   SITE CREDIT FOOTER
+   ========================================================================== */
+.site-credit {
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(27, 42, 74, 0.45);
+  padding: 0 20px 32px;
+  letter-spacing: 0.2px;
+}
+
+.site-credit a {
+  color: rgba(27, 42, 74, 0.55);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.site-credit a:hover {
+  color: var(--accent-gold);
+}
+
+/* ==========================================================================
    BOTTOM NAVIGATION BAR (FLOATING 5-BUTTON BAR)
    ========================================================================== */
 .bottom-nav-container {
