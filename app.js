@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize RSVP Form Handler
   initRSVPForm();
+
+  // Initialize Back-Button interception for all modals
+  initModalBackButton();
 });
 
 /* ==========================================================================
@@ -187,6 +190,42 @@ function initSumbanganModal() {
       qrView.classList.remove('d-none');
     });
   }
+}
+
+/* ==========================================================================
+   4. MOBILE BACK BUTTON — CLOSE ACTIVE MODAL INSTEAD OF NAVIGATING BACK
+   Automatically applies to every Bootstrap modal on the page.
+   ========================================================================== */
+function initModalBackButton() {
+  // Track which modal (if any) pushed a history entry
+  let _activeModalEl = null;
+
+  // Listen on all modals
+  document.querySelectorAll('.modal').forEach((modalEl) => {
+    // On open: push a dummy history state so the back button lands here
+    modalEl.addEventListener('show.bs.modal', () => {
+      _activeModalEl = modalEl;
+      history.pushState({ modalBackGuard: true }, '');
+    });
+
+    // On close (by any means: X, backdrop, ESC): consume the state we pushed
+    modalEl.addEventListener('hide.bs.modal', () => {
+      if (_activeModalEl === modalEl) {
+        _activeModalEl = null;
+        history.back(); // Remove the dummy entry cleanly
+      }
+    });
+  });
+
+  // Intercept the hardware/browser back button
+  window.addEventListener('popstate', () => {
+    if (_activeModalEl) {
+      // Back was pressed while a modal is open — close the modal, don't navigate
+      const bsModal = bootstrap.Modal.getInstance(_activeModalEl);
+      _activeModalEl = null; // Clear first to prevent hide.bs.modal double-back
+      if (bsModal) bsModal.hide();
+    }
+  });
 }
 
 /* ==========================================================================
