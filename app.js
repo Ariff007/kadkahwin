@@ -231,11 +231,16 @@ function initModalBackButton() {
 /* ==========================================================================
    4. RSVP FORM (FIRAFORM ENDPOINT INTEGRATION)
    ========================================================================== */
+const RSVP_STORAGE_KEY = 'rsvp_submission';
+
 function initRSVPForm() {
   const form = document.getElementById('rsvpForm');
   const alertContainer = document.getElementById('rsvp-alert-container');
 
   if (!form) return;
+
+  // Pre-fill & lock form if user has already submitted
+  restoreRSVPState(form, alertContainer);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -249,8 +254,9 @@ function initRSVPForm() {
       nama: form.nama.value,
       tel: form.tel.value,
       kehadiran: form.kehadiran.value,
-      pax: form.pax.value,
-      ucapan: form.ucapan.value,
+      pax_dewasa: form.pax_dewasa.value,
+      pax_kanak: form.pax_kanak.value,
+      ucapan: form.ucapan ? form.ucapan.value : '',
       timestamp: new Date().toISOString()
     };
 
@@ -270,9 +276,12 @@ function initRSVPForm() {
         throw new Error(`Server responded with ${response.status}`);
       }
 
-      // Show success feedback
-      showRSVPAlert('success', 'Terima kasih! RSVP dan ucapan anda telah berjaya dihantar.');
-      form.reset();
+      // Save submission to localStorage
+      localStorage.setItem(RSVP_STORAGE_KEY, JSON.stringify({ submitted: true, data: formData }));
+
+      // Show success feedback and lock form
+      showRSVPAlert('success', 'Terima kasih! RSVP anda telah berjaya dihantar.');
+      lockRSVPForm(form);
     } catch (error) {
       console.error('Firaform submission error:', error);
       showRSVPAlert('danger', 'Maaf, ralat berlaku semasa menghantar. Sila cuba lagi.');
@@ -290,5 +299,70 @@ function initRSVPForm() {
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     `;
+  }
+}
+
+/* ==========================================================================
+   5. RSVP LOCALSTORAGE — Restore & lock form if already submitted
+   ========================================================================== */
+function restoreRSVPState(form, alertContainer) {
+  try {
+    const saved = localStorage.getItem(RSVP_STORAGE_KEY);
+    if (!saved) return;
+
+    const { submitted, data } = JSON.parse(saved);
+    if (!submitted || !data) return;
+
+    // Re-populate fields with saved values
+    form.nama.value = data.nama || '';
+    form.tel.value = data.tel || '';
+    form.kehadiran.value = data.kehadiran || '';
+    form.pax_dewasa.value = data.pax_dewasa || '1';
+    form.pax_kanak.value = data.pax_kanak || '0';
+
+    // Show a soft reminder banner
+    if (alertContainer) {
+      const date = data.timestamp ? new Date(data.timestamp).toLocaleDateString('ms-MY') : '';
+      alertContainer.innerHTML = `
+        <div class="alert alert-success border-0 shadow-sm mb-3 d-flex align-items-center justify-content-between flex-wrap gap-2" role="alert">
+          <div class="d-flex align-items-center gap-2">
+            <i class="fas fa-check-circle fs-5 flex-shrink-0"></i>
+            <span class="small">Anda telah menghantar RSVP${date ? ' pada ' + date : ''}.</span>
+          </div>
+          <button class="btn btn-sm btn-outline-success" id="rsvp-resubmit-btn" type="button">
+            <i class="fas fa-redo me-1"></i> Hantar Semula
+          </button>
+        </div>
+      `;
+
+      // Allow re-submission by clearing the saved flag
+      document.getElementById('rsvp-resubmit-btn')?.addEventListener('click', () => {
+        localStorage.removeItem(RSVP_STORAGE_KEY);
+        alertContainer.innerHTML = '';
+        unlockRSVPForm(form);
+      });
+    }
+
+    lockRSVPForm(form);
+  } catch (e) {
+    console.warn('Could not restore RSVP state:', e);
+  }
+}
+
+function lockRSVPForm(form) {
+  form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-check me-2"></i> RSVP Dihantar';
+  }
+}
+
+function unlockRSVPForm(form) {
+  form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = false);
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i> HANTAR RSVP';
   }
 }
