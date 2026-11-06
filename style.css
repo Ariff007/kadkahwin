@@ -32,12 +32,12 @@
   --accent-gold-hover: #a8843e;
   --accent-gold-light: #f9f5ec;
   --accent-gold-glow: rgba(197, 160, 89, 0.25);
-  --text-navy: #1b2a4a;
+  --text-navy: #6b9474;
   --text-muted: #5a6e85;
   --white: #ffffff;
 
   /* --- SHADOWS & GLASSMORPHISM --- */
-  --shadow-glass: 0 10px 30px -5px rgba(27, 42, 74, 0.08), 0 0 15px rgba(197, 160, 89, 0.12);
+  --shadow-glass: 0 10px 30px -5px rgba(107, 148, 116, 0.08), 0 0 15px rgba(197, 160, 89, 0.12);
   --shadow-hover: 0 15px 35px -5px rgba(27, 42, 74, 0.15);
   --backdrop-blur: blur(12px);
 
@@ -380,7 +380,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
 .couple-hashtag {
   font-family: var(--font-hashtag);
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-navy);
   margin-bottom: 5px;
@@ -492,7 +492,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .btn-submit-rsvp {
-  background: linear-gradient(135deg, var(--text-navy) 0%, #2a3e66 100%);
+  background: linear-gradient(135deg, var(--text-navy) 0%, #4f7a5a 100%);
   color: var(--white);
   width: 100%;
   padding: 12px;
@@ -635,7 +635,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .bottom-nav {
-  background: rgba(27, 42, 74, 0.94);
+  background: rgba(107, 148, 116, 0.94);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(197, 160, 89, 0.4);
@@ -684,7 +684,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #d4af37 0%, #c5a059 100%);
-  border: 2.5px solid#1b2a4a;
+  border: 2.5px solid #6b9474;
   color: var(--white) !important;
   display: flex;
   flex-direction: column;
