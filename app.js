@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    DIGITAL WEDDING CARD - ARIFF & ANIS
    Interactive JavaScript Logic
    ========================================================================== */
@@ -165,35 +165,46 @@ function initCountdownTimer() {
 }
 
 /* ==========================================================================
-   3. SUMBANGAN MODAL (NOTICE -> REVEAL QR CODE)
+   3. SUMBANGAN MODAL (GIFT -> NOTICE -> REVEAL QR CODE)
    ========================================================================== */
 function initSumbanganModal() {
   const sumbanganModalEl = document.getElementById('sumbanganModal');
-  const noticeView = document.getElementById('sumbangan-notice-view');
-  const qrView = document.getElementById('sumbangan-qr-view');
+  const giftView    = document.getElementById('sumbangan-gift-view');
+  const noticeView  = document.getElementById('sumbangan-notice-view');
+  const qrView      = document.getElementById('sumbangan-qr-view');
   const btnRevealQr = document.getElementById('btn-reveal-qr');
+  const pagination  = document.getElementById('sumbangan-pagination');
+  const nextBtn     = document.getElementById('sumbangan-next-btn');
+  const dots        = document.querySelectorAll('.sumbangan-dot');
 
   if (!sumbanganModalEl) return;
 
-  // Reset to Notice View every time the modal is opened
-  sumbanganModalEl.addEventListener('show.bs.modal', () => {
-    if (noticeView && qrView) {
-      noticeView.classList.remove('d-none');
-      qrView.classList.add('d-none');
-    }
-  });
+  function showPage(page) {
+    // 0 = gift, 1 = notice, 2 = QR
+    giftView.classList.toggle('d-none',   page !== 0);
+    noticeView.classList.toggle('d-none', page !== 1);
+    qrView.classList.toggle('d-none',     page !== 2);
 
-  // Reveal QR view on clicking 'Teruskan' / Proceed
-  if (btnRevealQr) {
-    btnRevealQr.addEventListener('click', () => {
-      noticeView.classList.add('d-none');
-      qrView.classList.remove('d-none');
-    });
+    // Hide pagination footer on QR page
+    pagination.classList.toggle('d-none', page === 2);
+
+    // Update dots (2 dots for pages 0 & 1)
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (page < 2) dots[page]?.classList.add('active');
   }
+
+  // Reset to gift page every time modal opens
+  sumbanganModalEl.addEventListener('show.bs.modal', () => showPage(0));
+
+  // Next arrow: gift -> notice
+  nextBtn?.addEventListener('click', () => showPage(1));
+
+  // "Teruskan ke QR" button: notice -> QR
+  btnRevealQr?.addEventListener('click', () => showPage(2));
 }
 
 /* ==========================================================================
-   4. MOBILE BACK BUTTON — CLOSE ACTIVE MODAL INSTEAD OF NAVIGATING BACK
+   4. MOBILE BACK BUTTON â€” CLOSE ACTIVE MODAL INSTEAD OF NAVIGATING BACK
    Automatically applies to every Bootstrap modal on the page.
    ========================================================================== */
 function initModalBackButton() {
@@ -220,7 +231,7 @@ function initModalBackButton() {
   // Intercept the hardware/browser back button
   window.addEventListener('popstate', () => {
     if (_activeModalEl) {
-      // Back was pressed while a modal is open — close the modal, don't navigate
+      // Back was pressed while a modal is open â€” close the modal, don't navigate
       const bsModal = bootstrap.Modal.getInstance(_activeModalEl);
       _activeModalEl = null; // Clear first to prevent hide.bs.modal double-back
       if (bsModal) bsModal.hide();
@@ -303,7 +314,7 @@ function initRSVPForm() {
 }
 
 /* ==========================================================================
-   5. RSVP LOCALSTORAGE — Restore & lock form if already submitted
+   5. RSVP LOCALSTORAGE â€” Restore & lock form if already submitted
    ========================================================================== */
 function restoreRSVPState(form, alertContainer) {
   try {
