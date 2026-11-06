@@ -1,10 +1,15 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    DIGITAL WEDDING CARD - ARIFF & ANIS
    Design System: Modern Minimalist (Blueish White, Gold & Midnight Navy)
    Controlled via CSS Variables for Seamless Future Theme Switching
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@font-face {
+  font-family: "TheSeasons";
+  src: url("assets/fonts/TheSeasons.ttf");
+}
 
 @font-face {
   font-family: "EdwardianScriptItc";
@@ -42,14 +47,18 @@
   --backdrop-blur: blur(12px);
 
   /* --- TYPOGRAPHY --- */
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Google Sans', Georgia, serif;
   --font-calligraphy: 'EdwardianScriptItc', cursive;
-  --font-sans: 'Google Sans', sans-serif;
+  --font-sans: 'TheSeasons', Georgia, serif;
   --font-arabic: 'QPCHafs';
   --font-hashtag: 'HokyaaScriptPress';
 
   /* --- ANIMATIONS & TRANSITIONS --- */
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- LETTER SPACING --- */
+  --letter-spacing-body: 1px;
+  --letter-spacing-tight: 0px;
 }
 
 /* Base Styles */
@@ -66,6 +75,7 @@ html {
 
 body {
   font-family: var(--font-sans);
+  letter-spacing: var(--letter-spacing-body);
   background: var(--bg-gradient);
   color: var(--text-navy);
   min-height: 100vh;
@@ -205,8 +215,8 @@ body.cover-active {
 }
 
 .cover-ampersand-row {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 1.8rem;
   font-style: italic;
   color: var(--accent-gold);
   margin: 4px 0;
@@ -241,7 +251,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: var(--letter-spacing-body);
   box-shadow: 0 8px 20px rgba(197, 160, 89, 0.4);
   transition: var(--transition-smooth);
   cursor: pointer;
@@ -323,6 +333,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
 .arabic-header {
   font-family: var(--font-arabic);
+  letter-spacing: var(--letter-spacing-tight);
   direction: rtl;
   font-size: 1.6rem;
   color: var(--accent-gold);
@@ -364,6 +375,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
 .couple-name {
   font-family: var(--font-calligraphy);
+  letter-spacing: var(--letter-spacing-tight);
   font-size: 3.8rem;
   color: var(--text-navy);
   line-height: 1.1;
@@ -371,7 +383,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .couple-ampersand {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.8rem;
   font-style: italic;
   color: var(--accent-gold);
@@ -380,6 +392,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
 .couple-hashtag {
   font-family: var(--font-hashtag);
+  letter-spacing: var(--letter-spacing-tight);
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-navy);
@@ -651,7 +664,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 .nav-item-btn {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -737,7 +750,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .modal-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 700;
   color: var(--text-navy);
   font-size: 1.2rem;
@@ -747,7 +760,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   padding: 24px;
 }
 
-/* Responsive Google Maps embed — fills modal width, clips cleanly */
+/* Responsive Google Maps embed â€” fills modal width, clips cleanly */
 .map-embed-wrapper {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -857,7 +870,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   .couple-hashtag {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .countdown-box {
@@ -913,7 +926,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     font-size: 1rem;
   }
 
-  /* Reset the floating RSVP button — pop it outward to the right */
+  /* Reset the floating RSVP button â€” pop it outward to the right */
   .nav-item-rsvp {
     position: relative;
     /*right: -12px;*/
@@ -928,4 +941,60 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   .nav-item-rsvp i {
     font-size: 1.15rem;
   }
+}
+
+/* Sumbangan Gift Page */
+.sumbangan-gif-placeholder {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--accent-gold-light);
+  border: 2px dashed var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  color: var(--accent-gold);
+}
+
+.sumbangan-gift-text {
+  font-size: 0.95rem;
+  color: var(--text-navy);
+  line-height: 1.6;
+}
+
+/* Sumbangan Pagination Dots */
+.sumbangan-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.sumbangan-dot.active {
+  background: var(--accent-gold);
+  transform: scale(1.3);
+}
+
+/* Sumbangan Next Arrow Button */
+.sumbangan-next-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--text-navy);
+  color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(107, 148, 116, 0.35);
+}
+
+.sumbangan-next-arrow:hover {
+  background: var(--accent-gold);
+  transform: translateX(2px);
 }
