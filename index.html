@@ -60,7 +60,7 @@
   <button id="audio-toggle-btn" class="audio-control-btn" aria-label="Toggle Audio">
     <i class="fas fa-music"></i>
   </button>
-  <audio id="bg-audio" loop src="assets/audio/bg_audio1.mp3"></audio>
+  <audio id="bg-audio" loop src="assets/audio/bg_audio.mp3"></audio>
 
   <!-- ==========================================================================
        MAIN CARD CONTAINER WRAPPER
@@ -351,7 +351,7 @@
           <div class="contact-card">
             <div>
               <div class="contact-name">Ezza</div>
-              <div class="contact-role">Kakak Pengantin Lelaki</div>
+              <div class="contact-role">Kakak</div>
             </div>
             <div class="contact-actions">
               <a href="tel:+601113291583" class="btn-contact-action btn-call" title="Telefon"><i
@@ -365,7 +365,7 @@
           <div class="contact-card">
             <div>
               <div class="contact-name">Afiq</div>
-              <div class="contact-role">Abang Pengantin Lelaki</div>
+              <div class="contact-role">Abang</div>
             </div>
             <div class="contact-actions">
               <a href="tel:+60182086265" class="btn-contact-action btn-call" title="Telefon"><i
@@ -379,7 +379,7 @@
           <div class="contact-card">
             <div>
               <div class="contact-name">Azzam</div>
-              <div class="contact-role">Adik Pengantin Lelaki</div>
+              <div class="contact-role">Adik</div>
             </div>
             <div class="contact-actions">
               <a href="tel:+60193858768" class="btn-contact-action btn-call" title="Telefon"><i
@@ -414,7 +414,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content text-center">
         <div class="modal-header">
-          <h5 class="modal-title"><i class="fas fa-map-marked-alt text-gold me-2"></i>Aplikasi Navigasi</h5>
+          <h5 class="modal-title"><i class="fas fa-map-marked-alt text-gold me-2"></i>Lokasi</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -537,9 +537,12 @@
 
           <!-- Page 1: Gift Message -->
           <div id="sumbangan-gift-view" class="text-center">
+            <img src="assets/images/gift.gif" class="sumbangan-gif-placeholder mx-auto mb-3">
+            <!--
             <div class="sumbangan-gif-placeholder mx-auto mb-3">
               <i class="fas fa-gift"></i>
             </div>
+            -->
             <p class="sumbangan-gift-text px-2">
               Hadiah yang paling bermakna buat kami adalah kehadiran dan doa restu anda di majlis kami.
             </p>
@@ -585,8 +588,11 @@
 
         </div>
 
-        <!-- Pagination footer: dots + next arrow (hidden on QR page) -->
+        <!-- Pagination footer: back arrow + dots + next arrow (hidden on QR page) -->
         <div id="sumbangan-pagination" class="d-flex align-items-center justify-content-between px-3 pb-3">
+          <button id="sumbangan-back-btn" class="btn sumbangan-next-arrow invisible" aria-label="Kembali">
+            <i class="fas fa-arrow-left"></i>
+          </button>
           <div class="d-flex gap-2">
             <span class="sumbangan-dot active" data-page="0"></span>
             <span class="sumbangan-dot" data-page="1"></span>
