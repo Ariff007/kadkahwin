@@ -482,6 +482,10 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
+.rsvp-card p {
+  letter-spacing: var(--letter-spacing-tight);
+}
+
 .form-label {
   font-weight: 600;
   font-size: 0.85rem;
@@ -829,6 +833,10 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Sumbangan QR Container */
+#btn-reveal-qr {
+  background-color: #fada5e;
+}
+
 .qr-container {
   text-align: center;
 }
@@ -926,7 +934,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     font-size: 1rem;
   }
 
-  /* Reset the floating RSVP button â€” pop it outward to the right */
+  /* Reset the floating RSVP button & pop it outward to the right */
   .nav-item-rsvp {
     position: relative;
     /*right: -12px;*/
@@ -991,7 +999,7 @@ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   justify-content: center;
   font-size: 0.9rem;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 12px rgba(107, 148, 116, 0.35);
+
 }
 
 .sumbangan-next-arrow:hover {
